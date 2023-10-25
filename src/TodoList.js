@@ -21,6 +21,14 @@ const TodoList = () => {
         setInputTask("");
     }
 
+    const handleDeleteTodo = (taskId) => {
+        const newList = list.filter(
+            (task) => task.id !== taskId
+        );
+
+        setList(newList);
+    }
+
     return (
         <div className='Todo'>
             <h1>My Todo-List</h1>
@@ -43,6 +51,10 @@ const TodoList = () => {
                 {list.map((task) => (
                     <li className='task' key={task.id}> 
                         {task.todo}
+
+                        <button onClick={() => handleDeleteTodo(task.id)}>
+                            Delete
+                        </button>
                     
                     </li>
                 ))}
