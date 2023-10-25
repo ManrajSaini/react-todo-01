@@ -6,6 +6,8 @@ const TodoList = () => {
 
     const [inputTask, setInputTask] = useState("");
     const [list, setList] = useState([]);
+    const [editTaskID, setEditTaskID] = useState(null);
+    const [editTask, setEditTask] = useState("");
 
     const handleInputChange = (event) => {
         setInputTask(event.target.value);
@@ -29,6 +31,26 @@ const TodoList = () => {
         setList(newList);
     }
 
+    const handleEditTodo = (taskId, updatedTask) => {
+        const updatedList = list.map((task) => 
+            taskId === task.id ? {...task, todo: updatedTask} : task
+        );
+
+        setList(updatedList);
+    }
+
+    const handleSaveEdit = (taskId) => {
+        handleEditTodo(taskId, editTask);
+
+        setEditTaskID(null);
+        setEditTask("");
+    }
+
+    const handleCancelEdit = () => {
+        setEditTaskID(null);
+        setEditTask("");
+    }
+
     return (
         <div className='Todo'>
             <h1>My Todo-List</h1>
@@ -50,7 +72,31 @@ const TodoList = () => {
             <ul>
                 {list.map((task) => (
                     <li className='task' key={task.id}> 
-                        {task.todo}
+                        {editTaskID === task.id ? (
+                            <div>
+                                <div>
+                                    <input 
+                                        type='text'
+                                        className='input'
+                                        value={editTask}
+                                        onChange={(e) => setEditTask(e.target.value)}
+                                    />
+                                </div>
+
+                                <button onClick={() => handleSaveEdit(task.id)}>Save</button>
+                                <button onClick={handleCancelEdit}>Cancel</button>
+
+                            </div>
+                        ) : (
+                            <div>
+                                {task.todo}
+
+                                <button onClick={() => {
+                                    setEditTaskID(task.id);
+                                    setEditTask(task.todo);
+                                }}>Edit</button>
+                            </div>
+                        )}
 
                         <button onClick={() => handleDeleteTodo(task.id)}>
                             Delete

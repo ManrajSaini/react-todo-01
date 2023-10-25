@@ -30,6 +30,7 @@ button {
     font-weight: 800;
     border-radius: 4px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-left: 10px;
 }
 
 .input {
@@ -39,6 +40,7 @@ button {
     border-radius: 9px;
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-bottom: 10px;
 }
 
 .Top {
