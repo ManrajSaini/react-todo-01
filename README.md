@@ -1,6 +1,8 @@
 # React Todo List
 
 A simple Todo List web application built with React.js that allows you to manage your tasks. You can add, delete, read, and edit your todos.
+![image](https://github.com/ManrajSaini/react-todo-01/assets/86542773/01683f3b-a759-4200-9183-8a7f99e056f5)
+
 
 ## Features
 
